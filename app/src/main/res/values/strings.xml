@@ -1,3 +1,16 @@
 <resources>
     <string name="app_name">Agenda_DMOS5</string>
+
+    <string name="hint_input_nome_completo">Digite o seu nome compleo</string>
+    <string name="hint_input_telefone_fixo">Digite um telefone fixo</string>
+    <string name="hint_input_telefone_contato">Digite um telefone de contato</string>
+    <string name="button_save">Salvar</string>
+    <string name="erro_empty_fields">É necessário informar todos os campos!</string>
+    <string name="erro_null_aluno">Contato inválido</string>
+    <string name="unexpected_error">Ocorreu um erro inesperado</string>
+    <string name="success_message">Contato adicionado com sucesso!</string>
+
+    <string name="texto_nome">Nome: </string>
+    <string name="texto_telelefone_fixo">Telefone Fixo: </string>
+    <string name="texto_telefon_contato">Telefone Contato: </string>
 </resources>

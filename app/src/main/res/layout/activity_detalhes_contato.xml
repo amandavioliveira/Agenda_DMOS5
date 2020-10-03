@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".view.DetalhesContatoActivity">
+
+    <TextView
+        android:id="@+id/textview_texto_nome"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/texto_nome"
+        android:textSize="20dp"
+        android:layout_margin="8dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textview_nome_completo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="25dp"
+        android:textColor="#000"
+        android:layout_margin="8dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/textview_texto_nome" />
+
+    <TextView
+        android:id="@+id/textview_texto_fixo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/texto_telelefone_fixo"
+        android:textSize="20dp"
+        android:layout_margin="8dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/textview_nome_completo" />
+
+    <TextView
+        android:id="@+id/textview_telefone_fixo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="25dp"
+        android:textColor="#000"
+        android:layout_margin="8dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/textview_texto_fixo" />
+
+    <TextView
+        android:id="@+id/textview_texto_contato"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/texto_telefon_contato"
+        android:textSize="20dp"
+        android:layout_margin="8dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/textview_telefone_fixo" />
+
+    <TextView
+        android:id="@+id/textview_telefone_contato"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="25dp"
+        android:textColor="#000"
+        android:layout_margin="8dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/textview_texto_contato" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
