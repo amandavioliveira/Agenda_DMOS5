@@ -8,12 +8,21 @@ public class ContatoUsuario implements Serializable {
     private String nomeCompleto;
     private String telefoneFixo;
     private String telefoneContato;
+    private String idUsuario;
+
     public static final String CONTATO_KEY = "CONTATO_KEY";
 
     public ContatoUsuario(String nomeCompleto, String telefoneFixo, String telefoneContato){
         this.nomeCompleto = nomeCompleto;
         this.telefoneFixo = telefoneFixo;
         this.telefoneContato = telefoneContato;
+    }
+
+    public ContatoUsuario(String nomeCompleto, String telefoneFixo, String telefoneContato, String idUsuario){
+        this.nomeCompleto = nomeCompleto;
+        this.telefoneFixo = telefoneFixo;
+        this.telefoneContato = telefoneContato;
+        this.idUsuario = idUsuario;
     }
 
     public String getNomeCompleto() {
@@ -38,6 +47,14 @@ public class ContatoUsuario implements Serializable {
 
     public void setTelefoneContato(String telefoneContato) {
         this.telefoneContato = telefoneContato;
+    }
+
+    public String getIdUsuario() {
+        return idUsuario;
+    }
+
+    public void setIdUsuario(String idUsuario) {
+        this.idUsuario = idUsuario;
     }
 
     @NonNull

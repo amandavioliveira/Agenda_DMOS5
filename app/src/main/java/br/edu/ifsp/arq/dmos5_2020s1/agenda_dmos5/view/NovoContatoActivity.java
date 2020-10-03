@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
@@ -61,10 +62,13 @@ public class NovoContatoActivity extends AppCompatActivity implements View.OnCli
         }else{
             mContatoDao = new ContatoUsuarioDAO(this);
             try{
+                SharedPreferences mSharedPreferences = this.getPreferences(MODE_PRIVATE);
+                mSharedPreferences = this.getSharedPreferences(getString(R.string.file_preferences), MODE_PRIVATE);
+
                 mContatoDao.adicionar(new ContatoUsuario(nomeCompleto, telefoneFixo, telefoneContato));
                 finalizar(true);
             }catch (NullPointerException e){
-                Toast.makeText(this, R.string.erro_null_aluno, Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, R.string.erro_null_contato, Toast.LENGTH_SHORT).show();
             }
         }
     }

@@ -9,6 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import br.edu.ifsp.arq.dmos5_2020s1.agenda_dmos5.model.ContatoUsuario;
+import br.edu.ifsp.arq.dmos5_2020s1.agenda_dmos5.model.Usuario;
 
 public class ContatoUsuarioDAO {
 
@@ -27,6 +28,7 @@ public class ContatoUsuarioDAO {
         valores.put(SQLiteHelper.COLUMN_NOME_COMPLETO, contato.getNomeCompleto());
         valores.put(SQLiteHelper.COLUMN_TELEFONE_FIXO, contato.getTelefoneFixo());
         valores.put(SQLiteHelper.COLUMN_TELEFONE_CONTATO, contato.getTelefoneContato());
+        valores.put(SQLiteHelper.COLUMN_ID, contato.getIdUsuario());
 
         mSqLiteDatabase = mHelper.getWritableDatabase();
         mSqLiteDatabase.insert(SQLiteHelper.TABLE_NAME_CONTATOS, null, valores);
@@ -34,7 +36,11 @@ public class ContatoUsuarioDAO {
         mSqLiteDatabase.close();
     }
 
-    public List<ContatoUsuario> recuperaTodos(){
+    public List<ContatoUsuario> recuperaTodos(String id){
+        if (id == null) {
+            throw new NullPointerException();
+        }
+
         List<ContatoUsuario> mContatoList;
         ContatoUsuario mContato;
         Cursor mCursor;
@@ -44,16 +50,20 @@ public class ContatoUsuarioDAO {
         String colunas[] = new String[]{
                 SQLiteHelper.COLUMN_NOME_COMPLETO,
                 SQLiteHelper.COLUMN_TELEFONE_FIXO,
-                SQLiteHelper.COLUMN_TELEFONE_CONTATO
+                SQLiteHelper.COLUMN_TELEFONE_CONTATO,
+                SQLiteHelper.COLUMN_ID
         };
 
         mSqLiteDatabase = mHelper.getReadableDatabase();
 
+        String clausulaWhere = SQLiteHelper.COLUMN_ID + " = ?";
+        String argumentos[] = new String[]{id};
+
         mCursor = mSqLiteDatabase.query(
                 SQLiteHelper.TABLE_NAME_CONTATOS,
                 colunas,
-                null,
-                null,
+                clausulaWhere,
+                argumentos,
                 null,
                 null,
                 SQLiteHelper.COLUMN_NOME_COMPLETO + " COLLATE NOCASE ASC"
@@ -63,7 +73,8 @@ public class ContatoUsuarioDAO {
             mContato = new ContatoUsuario(
                     mCursor.getString(0),
                     mCursor.getString(1),
-                    mCursor.getString(2)
+                    mCursor.getString(2),
+                    mCursor.getString(3)
             );
 
             mContatoList.add(mContato);
@@ -72,5 +83,19 @@ public class ContatoUsuarioDAO {
         mCursor.close();
         mSqLiteDatabase.close();
         return mContatoList;
+    }
+
+    public void updateUsuario(Usuario usuario) {
+        if (usuario == null) {
+            throw new NullPointerException();
+        }
+        ContentValues values = new ContentValues();
+        values.put(SQLiteHelper.COLUMN_EMAIL, usuario.getEmail());
+
+        mSqLiteDatabase = mHelper.getReadableDatabase();
+
+        mSqLiteDatabase.update(SQLiteHelper.TABLE_NAME_CONTATOS, values, null, null);
+
+        mSqLiteDatabase.close();
     }
 }
